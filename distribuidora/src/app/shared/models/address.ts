@@ -1,5 +1,6 @@
 export class Address {
     public description: string;
-    public lat:double;
-    public long:double;
+    public lat: number;
+    public long: number;
 }
+

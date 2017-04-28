@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { DataService } from '../../shared/services/data.service';
 
 @Component({
   selector: 'rotas-cmp',
   templateUrl: './rotas.component.html',
   styleUrls: ['./rotas.component.css'],
-    providers:[DataService]
+  providers: [DataService]
 })
 export class RotasComponent implements OnInit {
     
