@@ -1,8 +1,8 @@
 <p>
-  rotas works!
+    rotas works!
 </p>
 
-<agm-map [latitude]="lat" [longitude]="lng" class="map-container">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+<agm-map *ngIf="rota" class="map-container" [scrollwheel]="false" [disableDefaultUI]="true">
+    <agm-marker *ngFor="let e of rota.Entregas; let i = index" [latitude]="e.endereco.lat" [longitude]="e.endereco.long" [iconUrl]="getMarkerIcon(i)" (markerClick)="clickedMarker(m.label, i)">
+    </agm-marker>
 </agm-map>
-

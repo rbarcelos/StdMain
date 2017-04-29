@@ -9,7 +9,7 @@
         {
             "destinatario": "ATACADÃO DISTR COM E IND LTDA",
             "endereco": {
-                "description": "AV VISCONDE DE TAUNAY, PG, PONTA GROSSA - PARANA",
+                "description": "AV VISCONDE DE TAUNAY, PG, PONTA GROSSA - PARANA"
             },
             "estatus": "Done",
             "data": "19/04/2017",
@@ -21,7 +21,7 @@
         {
             "destinatario": "IRMÃO MUFFATO",
             "endereco": {
-                "description": "RUA OMILIO MONTEIRO SOARES, 1920, CURITIBA - PARANA",
+                "description": "RUA OMILIO MONTEIRO SOARES, 1920, CURITIBA - PARANA"
             },
             "estatus": "Done",
             "data": "19/04/2017",
@@ -33,7 +33,7 @@
         {
             "destinatario": "CONDOR SUPER CENTER",
             "endereco": {
-                "description": "Estr. do Ganchinho, 1000 - Umbará, Curitiba - PR",
+                "description": "Estr. do Ganchinho, 1000 - Umbará, Curitiba - PR"
             },
             "estatus": "Done",
             "data": "19/04/2017",
