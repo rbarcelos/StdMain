@@ -22,8 +22,6 @@ export class MapService extends GoogleMapsAPIWrapper{
         console.log('Getting Address - ', address);
         return Observable.create(observer => 
         {
-            this.loader.load().then(() => 
-            {
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode( 
                     { 'address': address}, 
@@ -38,7 +36,6 @@ export class MapService extends GoogleMapsAPIWrapper{
                             observer.complete();
                         }
                     })
-            });
         });
     }
     

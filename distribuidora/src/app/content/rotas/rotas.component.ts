@@ -6,6 +6,7 @@ import { Rota } from '../../shared/models/rota';
 import { Address } from '../../shared/models/address';
 import { Entrega } from '../../shared/models/entrega';
 import { Observable, Observer } from 'rxjs';
+import { GoogleMapsAPIWrapper ,MapsAPILoader} from '@agm/core';
 
 @Component({
   selector: 'rotas-cmp',
@@ -18,37 +19,64 @@ export class RotasComponent implements OnInit {
     title: string = 'My first angular2-google-maps project';
     rota:Rota;
 
-    constructor(private dataService: DataService, private mapService:MapService,private taskManager:TaskManagerService, private ngZone:NgZone) { }
+    constructor(private dataService: DataService, private mapService:MapService,private taskManager:TaskManagerService, private ngZone:NgZone, private loader: MapsAPILoader) { }
 
   ngOnInit() {
-      this.loadRota();
+      this.loadMap().subscribe(this.loadRota.bind(this))
   }
     
-  loadRota()
+  loadMap()
     {
-        this.dataService.getData().subscribe(
-            result => {
-                // needs to run inside zone to update the map
-                this.ngZone.run(() => {
-                    
-                    this.taskManager.waitAll(result.entregas,this.mapService.resolveEntrega).subscribe(
-                        batchResult =>
+        return Observable.fromPromise(this.loader.load());
+    }
+    
+  loadRota()
+    {    
+//        this.dataService.getData().subscribe(
+//            result => {
+//                // needs to run inside zone to update the map                
+//                    this.resolveEntrega(result.entregas[0]).subscribe(
+//                    resolveResult =>
+//                        {
+//                             this.ngZone.run(() => {
+//                                 result.entregas[0].endereco.lat = resolveResult.lat();
+//                            result.entregas[0].endereco.long = resolveResult.lng();
+//                            this.rota = result;
+//                                   });                        
+//                        },
+//                    error => console.log(error),
+//                    () =>   console.log('Endereco loaded: '+this.rota.entregas[0].endereco.lat)
+//                        );
+//            },
+//            error => console.log(error),
+//            () => console.log('Rota loaded!'));
+        
+                var r = new Rota();
+                r.entregas = new Array<Entrega>();
+              
+                var entrega = new Entrega();
+        entrega.endereco = new Address();
+                entrega.endereco.description = "AV VISCONDE DE TAUNAY, PG, PONTA GROSSA - PARANA";
+        r.entregas.push(entrega);
+                // needs to run inside zone to update the map                
+                    this.resolveEntrega(entrega).subscribe(
+                    resolveResult =>
                         {
-                            for (let idx in batchResult) 
-                            {
-                                var res:any = batchResult[idx];
-                                result.entregas[idx].endereco.lat = res.lat();
-                                result.entregas[idx].endereco.long = res.lng();
-                            }
-                            
-                            this.rota = result;
+                             this.ngZone.run(() => {
+                                 entrega.endereco.lat = resolveResult.lat();
+                            entrega.endereco.long = resolveResult.lng();
+                           this.rota = r;
+                                   });                        
                         },
-                        error => console.log(error),
-                        () => console.log('All enderecos loaded!'));                 
-                });
-            },
-            error => console.log(error),
-            () => console.log('Rota loaded!'));
+                    error => console.log(error),
+                    () =>   console.log('Endereco loaded: '+this.rota.entregas[0].endereco.lat)
+                        );
+          
+    }
+    
+    resolveEntrega(entrega:Entrega)
+    {
+        return this.mapService.resolveEntrega(entrega);
     }
     
 //    resolveEndereco(ent:Address) {
