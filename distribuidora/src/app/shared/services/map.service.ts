@@ -22,8 +22,6 @@ export class MapService extends GoogleMapsAPIWrapper{
         console.log('Getting Address - ', address);
         return Observable.create(observer => 
         {
-            this.loader.load().then(() => 
-            {
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode( 
                     { 'address': address}, 
@@ -38,13 +36,6 @@ export class MapService extends GoogleMapsAPIWrapper{
                             observer.complete();
                         }
                     })
-            });
         });
-    }
-    
-    getMarkerIcon(id:number)
-    {
-        var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (id % 26));
-        return "https://mt.google.com/vt/icon/text="+markerLetter+"&psize=16&font=fonts/arialuni_t.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-b.png&ax=44&ay=48&scale=1"
     }
 }

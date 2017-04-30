@@ -11,13 +11,7 @@ export class TaskManagerService {
       let observableBatch = [];
 
       for (let idx in objs) {
-          var task = Observable.create(observer => 
-            {
-              var res = taskFunction(objs[idx]);
-              observer.next(res);
-              observer.complete();
-            });
-          
+          var task = taskFunction(objs[idx]); 
           observableBatch.push(task);
       }
 

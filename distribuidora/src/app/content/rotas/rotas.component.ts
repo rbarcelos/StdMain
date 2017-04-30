@@ -1,27 +1,33 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, } from '@angular/core';
 import { DataService } from '../../shared/services/data.service';
 import { MapService } from '../../shared/services/map.service';
 import { TaskManagerService } from '../../shared/services/task-manager.service';
 import { Rota } from '../../shared/models/rota';
 import { Address } from '../../shared/models/address';
 import { Entrega } from '../../shared/models/entrega';
+import { PontoMapaFactory } from './ponto-mapa-factory';
+import { MapaComponent } from '../mapa/mapa.component';
+import { PontoMapa } from '../mapa/ponto-mapa';
 import { Observable, Observer } from 'rxjs';
+import { GoogleMapsAPIWrapper ,MapsAPILoader} from '@agm/core';
 
 @Component({
   selector: 'rotas-cmp',
   templateUrl: './rotas.component.html',
   styleUrls: ['./rotas.component.css'],
-    providers: [DataService, MapService, TaskManagerService]
+  providers: [DataService, MapService, TaskManagerService],
+//    directives : [MapaComponent]
 })
 export class RotasComponent implements OnInit {
     
     title: string = 'My first angular2-google-maps project';
-    rota:Rota;
+    currRota:Rota;
+    mapaPontos:Array<PontoMapa> = [];
+    pontoFactory:PontoMapaFactory = new PontoMapaFactory();
 
-    constructor(private dataService: DataService, private mapService:MapService,private taskManager:TaskManagerService, private ngZone:NgZone) { }
+    constructor(private dataService: DataService, private mapService:MapService,private taskManager:TaskManagerService, private ngZone:NgZone, private loader: MapsAPILoader) { }
 
   ngOnInit() {
-      this.loadRota();
   }
     
   loadRota()
@@ -31,17 +37,19 @@ export class RotasComponent implements OnInit {
                 // needs to run inside zone to update the map
                 this.ngZone.run(() => {
                     
-                    this.taskManager.waitAll(result.entregas,this.mapService.resolveEntrega).subscribe(
+                    this.taskManager.waitAll(result.entregas,this.mapService.resolveEntrega.bind(this.mapService)).subscribe(
                         batchResult =>
                         {
+                            this.ngZone.run(() => {
                             for (let idx in batchResult) 
                             {
                                 var res:any = batchResult[idx];
-                                result.entregas[idx].endereco.lat = res.lat();
-                                result.entregas[idx].endereco.long = res.lng();
+                                var ponto = this.pontoFactory.create(Number(idx), result.entregas[idx],res.lat(), res.lng())
+                                this.mapaPontos.push(ponto)
                             }
                             
-                            this.rota = result;
+                            this.currRota = result;
+                            });
                         },
                         error => console.log(error),
                         () => console.log('All enderecos loaded!'));                 
@@ -65,10 +73,6 @@ export class RotasComponent implements OnInit {
 //    
 //    resolve
     
-    getMarkerIcon(idx:number)
-    {
-        return this.mapService.getMarkerIcon(idx);
-    }
 }
 
 
