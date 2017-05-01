@@ -1,11 +1,18 @@
-<div id="info-content">
+<div>
     {{model.descricao}}
     <table>
         <tr>
             <td>Endereco:</td>
             <td>{{model.endereco}}</td>
         </tr>
+        <tr>
+            <ng-template *ngFor="let st in model.statusBar;">
+                <td>{{st.iconName}}</td>
+                <td>{{st.description}}</td>
+            </ng-template>
+            <td>{{model.contentStatus}}</td>
+        </tr>
     </table>
-    
+
     {{model.lastUpdated | TimeAgoPipe}}
 </div>
