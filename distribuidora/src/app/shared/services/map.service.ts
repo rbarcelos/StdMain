@@ -38,10 +38,4 @@ export class MapService extends GoogleMapsAPIWrapper{
                     })
         });
     }
-    
-    getMarkerIcon(id:number)
-    {
-        var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (id % 26));
-        return "https://mt.google.com/vt/icon/text="+markerLetter+"&psize=16&font=fonts/arialuni_t.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-b.png&ax=44&ay=48&scale=1"
-    }
 }
