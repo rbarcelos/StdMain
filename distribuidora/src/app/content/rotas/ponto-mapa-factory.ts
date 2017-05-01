@@ -4,21 +4,21 @@ import { PontoMapaContent } from '../mapa/ponto-mapa-content';
 
 export class PontoMapaFactory {
     
-    create(idx:number, entrega:Entrega, lat:number, long:number)
+    create(idx:number, entrega:Entrega, resolvedAddress)
     {
         var ponto = new PontoMapa();
-        ponto.lat = lat;
-        ponto.long = long;
+        ponto.lat = resolvedAddress.geometry.location.lat();
+        ponto.long = resolvedAddress.geometry.location.lng();
         ponto.iconUrl = this.getMarkerIcon(idx);
-        ponto.content = this.createContent(entrega);
+        ponto.content = this.createContent(entrega, resolvedAddress);
         return ponto;
     }
     
-    private createContent(entrega:Entrega)
+    private createContent(entrega:Entrega, resolvedAddress)
     {
         let content = new PontoMapaContent();
         content.name = entrega.destinatario;
-        content.endereco = entrega.endereco.description;
+        content.endereco = resolvedAddress.formatted_address;
       //  content.lastUpdated = entrega.data;
         content.contentStatus = entrega.estatus;
         content.statusBar = [];

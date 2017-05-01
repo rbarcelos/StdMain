@@ -49,7 +49,7 @@ export class RotasComponent implements OnInit {
                             {
                                 var res:any = batchResult[idx];
                                 
-                                var ponto = this.pontoFactory.create(Number(idx), result.entregas[idx], res.lat(), res.lng())
+                                var ponto = this.pontoFactory.create(Number(idx), result.entregas[idx], res)
                                 this.mapaPontos.push(ponto)
                             }
                             

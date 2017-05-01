@@ -28,7 +28,7 @@ export class MapService extends GoogleMapsAPIWrapper{
                     function(results, status) 
                     {
                         if (status == google.maps.GeocoderStatus.OK) {
-                            observer.next(results[0].geometry.location);
+                            observer.next(results[0]);
                             observer.complete();
                         } else {
                             console.log('Error - ', results, ' & Status - ', status);
