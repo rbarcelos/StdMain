@@ -19,7 +19,7 @@ export class PontoMapaFactory {
         let content = new PontoMapaContent();
         content.name = entrega.destinatario;
         content.endereco = resolvedAddress.formatted_address;
-      //  content.lastUpdated = entrega.data;
+        content.lastUpdated = new Date(entrega.data);
         content.contentStatus = entrega.estatus;
         content.statusBar = [];
         content.statusBar.push({iconName:"receipt",description:entrega.notas.length.toString()})
