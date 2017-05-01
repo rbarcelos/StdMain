@@ -9,9 +9,10 @@ import { MomentModule } from 'angular2-moment';
 @NgModule({
   imports: [
     CommonModule,
-    AgmCoreModule
+    AgmCoreModule,
+    MomentModule
   ],
   declarations: [RotasComponent, MapaComponent, InfoWindowContentComponent],
-    exports: [RotasComponent]
+  exports: [RotasComponent]
 })
 export class ContentModule { }

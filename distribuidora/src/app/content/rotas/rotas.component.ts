@@ -41,7 +41,6 @@ export class RotasComponent implements OnInit {
             result => {
                 // needs to run inside zone to update the map
                 this.ngZone.run(() => {
-                    
                     this.taskManager.waitAll(result.entregas,this.mapService.resolveEntrega.bind(this.mapService)).subscribe(
                         batchResult =>
                         {
@@ -49,7 +48,8 @@ export class RotasComponent implements OnInit {
                             for (let idx in batchResult) 
                             {
                                 var res:any = batchResult[idx];
-                                var ponto = this.pontoFactory.create(Number(idx), result.entregas[idx],res.lat(), res.lng())
+                                
+                                var ponto = this.pontoFactory.create(Number(idx), result.entregas[idx], res.lat(), res.lng())
                                 this.mapaPontos.push(ponto)
                             }
                             
@@ -57,9 +57,10 @@ export class RotasComponent implements OnInit {
                             });
                         },
                     error => console.log(error),
-                    () =>   console.log('Endereco loaded: '+this.rota.entregas[0].endereco.lat)
+                        () =>   console.log('Enderecos loaded')
                         );
-          
+                }
+                )});    
     }
     
     resolveEntrega(entrega:Entrega)

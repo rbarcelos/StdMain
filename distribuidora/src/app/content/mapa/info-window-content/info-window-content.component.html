@@ -1,18 +1,18 @@
 <div>
-    {{model.descricao}}
+    {{model.name}}
     <table>
         <tr>
             <td>Endereco:</td>
             <td>{{model.endereco}}</td>
         </tr>
         <tr>
-            <ng-template *ngFor="let st in model.statusBar;">
+            <li *ngFor="let st of model.statusBar;">
                 <td>{{st.iconName}}</td>
                 <td>{{st.description}}</td>
-            </ng-template>
+            </li>
             <td>{{model.contentStatus}}</td>
         </tr>
     </table>
 
-    {{model.lastUpdated | TimeAgoPipe}}
+    {{model.lastUpdated | amTimeAgo}}
 </div>

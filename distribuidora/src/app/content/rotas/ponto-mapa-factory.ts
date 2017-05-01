@@ -20,7 +20,9 @@ export class PontoMapaFactory {
         content.name = entrega.destinatario;
         content.endereco = entrega.endereco.description;
       //  content.lastUpdated = entrega.data;
-        content.status = entrega.estatus;
+        content.contentStatus = entrega.estatus;
+        content.statusBar = [];
+        content.statusBar.push({iconName:"receipt",description:entrega.notas.length.toString()})
         return content;
     }
     
