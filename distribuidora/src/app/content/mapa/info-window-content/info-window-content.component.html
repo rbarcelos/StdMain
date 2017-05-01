@@ -1,0 +1,11 @@
+<div id="info-content">
+    {{model.descricao}}
+    <table>
+        <tr>
+            <td>Endereco:</td>
+            <td>{{model.endereco}}</td>
+        </tr>
+    </table>
+    
+    {{model.lastUpdated | TimeAgoPipe}}
+</div>

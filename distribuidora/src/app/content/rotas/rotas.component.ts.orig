@@ -28,15 +28,56 @@ export class RotasComponent implements OnInit {
     constructor(private dataService: DataService, private mapService:MapService,private taskManager:TaskManagerService, private ngZone:NgZone, private loader: MapsAPILoader) { }
 
   ngOnInit() {
+<<<<<<< HEAD
+      this.loadMap().subscribe(this.loadRota.bind(this))
+=======
+>>>>>>> master
   }
     
   loadMap()
     {
+<<<<<<< HEAD
         return Observable.fromPromise(this.loader.load());
     }
     
   loadRota()
-    {
+    {    
+//        this.dataService.getData().subscribe(
+//            result => {
+//                // needs to run inside zone to update the map                
+//                    this.resolveEntrega(result.entregas[0]).subscribe(
+//                    resolveResult =>
+//                        {
+//                             this.ngZone.run(() => {
+//                                 result.entregas[0].endereco.lat = resolveResult.lat();
+//                            result.entregas[0].endereco.long = resolveResult.lng();
+//                            this.rota = result;
+//                                   });                        
+//                        },
+//                    error => console.log(error),
+//                    () =>   console.log('Endereco loaded: '+this.rota.entregas[0].endereco.lat)
+//                        );
+//            },
+//            error => console.log(error),
+//            () => console.log('Rota loaded!'));
+        
+                var r = new Rota();
+                r.entregas = new Array<Entrega>();
+              
+                var entrega = new Entrega();
+        entrega.endereco = new Address();
+                entrega.endereco.description = "AV VISCONDE DE TAUNAY, PG, PONTA GROSSA - PARANA";
+        r.entregas.push(entrega);
+                // needs to run inside zone to update the map                
+                    this.resolveEntrega(entrega).subscribe(
+                    resolveResult =>
+                        {
+                             this.ngZone.run(() => {
+                                 entrega.endereco.lat = resolveResult.lat();
+                            entrega.endereco.long = resolveResult.lng();
+                           this.rota = r;
+                                   });                        
+=======
         this.dataService.getData().subscribe(
             result => {
                 // needs to run inside zone to update the map
@@ -55,6 +96,7 @@ export class RotasComponent implements OnInit {
                             
                             this.currRota = result;
                             });
+>>>>>>> master
                         },
                     error => console.log(error),
                     () =>   console.log('Endereco loaded: '+this.rota.entregas[0].endereco.lat)
@@ -66,6 +108,21 @@ export class RotasComponent implements OnInit {
     {
         return this.mapService.resolveEntrega(entrega);
     }
+    
+//    resolveEndereco(ent:Address) {
+//        return this.mapService.resolveAddress(endereco.description)
+//            .subscribe(
+//            result => {
+//                    endereco.lat = result.lat();
+//                    endereco.long = result.lng();
+//            },
+//            error => console.log(error),
+//            () => console.log('Geocoding completed: '+endereco.description)
+//        );
+//    }
+//    
+//    resolve
+    
 }
 
 

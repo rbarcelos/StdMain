@@ -15,8 +15,6 @@ declare var google: any;
     providers: [DataService, MapService, TaskManagerService]
 })
 export class MapaComponent implements OnInit, DoCheck {
-//    @Input() infoWindowContentFactory: InfoWindowContentFactory;
-//    @Input() listItemContentFactory: ListItemContentFactory;
     @Input('pontos') mapaPontos:Array<PontoMapa>;
     @Output("mapLoaded") mapLoadedEvent: EventEmitter<any> = new EventEmitter();
 
@@ -31,9 +29,10 @@ export class MapaComponent implements OnInit, DoCheck {
 
     ngOnInit() {
         this.loadMap().subscribe(() => 
-                                 {
+        {
             this.mapaBounds = new google.maps.LatLngBounds();
-            this.mapLoadedEvent.emit();});
+            this.mapLoadedEvent.emit();
+        });
     }
     
     ngDoCheck() {

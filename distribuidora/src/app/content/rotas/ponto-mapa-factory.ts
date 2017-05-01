@@ -1,5 +1,6 @@
 import { Entrega } from '../../shared/models/entrega';
 import { PontoMapa } from '../mapa/ponto-mapa';
+import { PontoMapaContent } from '../mapa/ponto-mapa-content';
 
 export class PontoMapaFactory {
     
@@ -9,7 +10,18 @@ export class PontoMapaFactory {
         ponto.lat = lat;
         ponto.long = long;
         ponto.iconUrl = this.getMarkerIcon(idx);
+        ponto.content = this.createContent(entrega);
         return ponto;
+    }
+    
+    private createContent(entrega:Entrega)
+    {
+        let content = new PontoMapaContent();
+        content.name = entrega.destinatario;
+        content.endereco = entrega.endereco.description;
+      //  content.lastUpdated = entrega.data;
+        content.status = entrega.estatus;
+        return content;
     }
     
     private getMarkerIcon(id:number)
