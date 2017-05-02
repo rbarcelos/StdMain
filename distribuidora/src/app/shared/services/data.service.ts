@@ -8,21 +8,8 @@ export class DataService {
 
     constructor(private http:Http) { }
     
-//    fetchData()
-//    {
-//        fetch({
-//            type: "GET",
-//            url: "../../../models/entregaData.json",
-//            dataType: 'json',
-//            cache: false,
-//            async: false
-//        });
-//
-//        callBack(map,<Rota>jQuery.parseJSON(jqxhr.responseText));
-//    }
-    
     getData():Observable<Rota> {
-        return this.http.get("assets/data.json")
+        return this.http.get("assets/data/data.json")
             .map(this.extractData)
             .catch(this.handleError);
     }
