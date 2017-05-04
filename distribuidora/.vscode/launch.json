@@ -8,7 +8,7 @@
       {
           "type": "node",
           "request": "launch",
-          "name": "Lauch Dist",
+          "name": "Launch Dist",
           "program": "${workspaceRoot}/node_modules/lite-server/bin/lite-server"
       },
       {
