@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { ContentModule } from './content/content.module';
 // import { FabModule } from './fab/fab.module';
-// import { NavBarModule } from './navbar/navbar.module';
+import { NavbarModule } from './navbar/navbar.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { SidebarRoutes } from './sidebar/sidebar.routes';
 import { RouterModule } from '@angular/router';
@@ -24,7 +24,7 @@ import { RouterModule } from '@angular/router';
       SharedModule,
       ContentModule,
       // FabModule,
-      // NavBarModule,
+      NavbarModule,
       SidebarModule,
       AgmCoreModule.forRoot({apiKey: 'AIzaSyBJHoiEGfmO9sVBI_3iJbNTW4Qc_dxdnyk', region:'BR',language:'pt-BR', libraries: ['places']}),
       RouterModule.forRoot([])
