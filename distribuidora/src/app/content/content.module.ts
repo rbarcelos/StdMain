@@ -10,6 +10,7 @@ import { AgmCoreModule } from '@agm/core';
 import { MapaComponent } from './mapa/mapa.component';
 import { InfoWindowContentComponent } from './mapa/info-window-content/info-window-content.component';
 import { MomentModule } from 'angular2-moment';
+import { NfeCardComponent } from './nfe-card/nfe-card.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { MomentModule } from 'angular2-moment';
     MomentModule,
     RouterModule.forChild(MODULE_ROUTES)
   ],
-  declarations: [RotasComponent, MapaComponent, InfoWindowContentComponent, MODULE_COMPONENTS ],
+  declarations: [RotasComponent, MapaComponent, InfoWindowContentComponent, MODULE_COMPONENTS, NfeCardComponent ],
   exports: [RotasComponent]
 })
 export class ContentModule { }

@@ -1,18 +1,14 @@
 .card-flip {
   perspective: 1000px;
-
 }
 
-.inputCard
-{
-    display: none;
+.inputCard {
+  display: none;
 }
 
-.inputCard:checked + div > div[class="flip"] {
-transform: rotateY(180deg);
+.inputCard:checked+div>div[class="flip"] {
+  transform: rotateY(180deg);
 }
-
-
 
 .card-flip,
 .front,
