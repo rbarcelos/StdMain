@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WizardComponent }   from "./cadastro/wizard/wizard.component";
 
 @Component({
     selector: 'content-cmp',

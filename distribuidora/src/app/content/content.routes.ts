@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { ContentComponent } from './content.component';
+// import { ContentComponent } from './content.component';
 import { HomeComponent } from './home/home.component';
 // import { UserComponent } from './user/user.component';
 // import { IconsComponent } from './icons/icons.component';
@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { RotasComponent } from './rotas/rotas.component';
 import { NotasFiscaisComponent } from './notasFiscais/notasFiscais.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { NotasCadastroComponent } from './cadastro/notasCadastro.component';
+// import { NotasCadastroComponent } from './cadastro/notasCadastro.component';
 
 export const MODULE_ROUTES: Route[] =[
     { path: 'dashboard', component: HomeComponent },
@@ -21,7 +21,7 @@ export const MODULE_ROUTES: Route[] =[
     { path: 'rotas', component:RotasComponent },
     { path: 'notas', component:NotasFiscaisComponent },
     { path: 'cadastro', component: CadastroComponent },
-    { path: '', redirectTo: 'rotas', pathMatch: 'full' }
+    // { path: '', redirectTo: 'rotas', pathMatch: 'full' }
 ]
 
 export const MODULE_COMPONENTS = [
@@ -34,5 +34,5 @@ export const MODULE_COMPONENTS = [
     RotasComponent,
     NotasFiscaisComponent,
     CadastroComponent,
-    NotasCadastroComponent,
+    // NotasCadastroComponent,
 ]
