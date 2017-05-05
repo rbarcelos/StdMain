@@ -10,12 +10,14 @@ import { ContentModule } from './content/content.module';
 // import { FabModule } from './fab/fab.module';
 import { NavbarModule } from './navbar/navbar.module';
 import { SidebarModule } from './sidebar/sidebar.module';
-import { SidebarRoutes } from './sidebar/sidebar.routes';
 import { RouterModule } from '@angular/router';
+
+import { ContentComponent } from './content/content.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { RouterModule } from '@angular/router';
+import { MODULE_COMPONENTS, MODULE_ROUTES } from './content.routes';
+
+
 import { RotasComponent } from './rotas/rotas.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapaComponent } from './mapa/mapa.component';
@@ -10,9 +15,10 @@ import { MomentModule } from 'angular2-moment';
   imports: [
     CommonModule,
     AgmCoreModule,
-    MomentModule
+    MomentModule,
+    RouterModule.forChild(MODULE_ROUTES)
   ],
-  declarations: [RotasComponent, MapaComponent, InfoWindowContentComponent],
+  declarations: [RotasComponent, MapaComponent, InfoWindowContentComponent, MODULE_COMPONENTS ],
   exports: [RotasComponent]
 })
 export class ContentModule { }
