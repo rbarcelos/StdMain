@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule }        from '@angular/forms';
-import { UIRouterModule }     from "@uirouter/angular";
+import { FormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './content.routes';
@@ -14,10 +13,10 @@ import { InfoWindowContentComponent } from './mapa/info-window-content/info-wind
 import { MomentModule } from 'angular2-moment';
 import { NfeCardComponent } from './nfe-card/nfe-card.component';
 
-import { WizardModule }   from "./cadastro/wizard/wizard.module";
+import { WizardModule } from './cadastro/wizard/wizard.module';
 // import { WizardComponent }   from "./cadastro/wizard/wizard.component";
 // import { appStates }          from "./cadastro/wizard/app.states";
-import {CadastroComponent} from "./cadastro/cadastro.component";
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 @NgModule({
   imports: [
@@ -27,7 +26,7 @@ import {CadastroComponent} from "./cadastro/cadastro.component";
     WizardModule,
     RouterModule.forChild(MODULE_ROUTES)
   ],
-  declarations: [RotasComponent, MapaComponent, InfoWindowContentComponent, MODULE_COMPONENTS, NfeCardComponent, CadastroComponent ],
+  declarations: [RotasComponent, MapaComponent, InfoWindowContentComponent, MODULE_COMPONENTS, NfeCardComponent, CadastroComponent],
   exports: [RotasComponent]
 })
 export class ContentModule { }

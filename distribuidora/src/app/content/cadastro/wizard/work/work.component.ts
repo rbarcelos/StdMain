@@ -1,17 +1,19 @@
-import { Component, OnInit }   from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { FormDataService }     from '../data/formData.service';
+import { FormDataService } from '../data/formData.service';
 
-@Component ({
-    selector:     'mt-wizard-work'
-    ,templateUrl: 'work.component.html'
+@Component({
+    selector: 'mt-wizard-work',
+    templateUrl: 'work.component.html',
+    styleUrls: ['../assets/css/riliwan-rabo.css', '../assets/css/style.css', '../assets/css/form.css']
+
 })
 
 export class WorkComponent implements OnInit {
     title = 'What do you do?';
     workType: string;
     form: any;
-    
+
     constructor(private formDataService: FormDataService) {
     }
 
@@ -21,9 +23,9 @@ export class WorkComponent implements OnInit {
     }
 
     save(form: any) {
-        if (!form.valid) 
+        if (!form.valid)
             return;
-        
+
         this.formDataService.setWork(this.workType);
     }
 }

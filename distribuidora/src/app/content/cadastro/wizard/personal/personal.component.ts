@@ -1,18 +1,20 @@
-import { Component, OnInit }   from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { Personal }            from '../data/formData.model';
-import { FormDataService }     from '../data/formData.service';
+import { Personal } from '../data/formData.model';
+import { FormDataService } from '../data/formData.service';
 
-@Component ({
-    selector:     'mt-wizard-personal'
-    ,templateUrl: 'personal.component.html'
+@Component({
+    selector: 'mt-wizard-personal',
+    templateUrl: 'personal.component.html',
+    styleUrls: ['../assets/css/riliwan-rabo.css', '../assets/css/style.css', '../assets/css/form.css']
+
 })
 
 export class PersonalComponent implements OnInit {
     title = 'Please tell us about yourself.';
     personal: Personal;
     form: any;
-    
+
     constructor(private formDataService: FormDataService) {
     }
 
@@ -22,9 +24,9 @@ export class PersonalComponent implements OnInit {
     }
 
     save(form: any) {
-        if (!form.valid) 
+        if (!form.valid)
             return;
-        
+
         this.formDataService.setPersonal(this.personal);
     }
 }
